@@ -1,0 +1,25 @@
+
+    <nav class="navbar">
+        <h1>Ladder and Snake</h1>
+    </nav>
+
+<div class="game-board">
+    <app-dice [value]="diceValue"></app-dice>
+    <button (click)="rollDice()" [disabled]="diceValue !== null">Rolle Dice</button>
+    <div class="players">
+        <app-player *ngFor="let player of players" [player]="player"></app-player>
+    </div>
+
+    <div class="board">
+        <div *ngFor="let cell of board; let i=index" class="cell" [ngClass]="{'occupied': isPlayerOnCell(i+1)}">
+        <div *ngIf="isSnake(i+1)" class="snake-line" ></div>
+        <div *ngIf="isLadder(i+1)" class="ladder-line" ></div>
+        <div *ngIf="isPlayerOnCell(i+1)" class="player-token">P</div> 
+        <div class="dice" *ngIf="showDice()">{{diceValue}}</div>
+        <div class="cell-number">{{cell}}</div>
+    </div>
+    </div>
+    <!-- [style.top]="calculateLinePosition(i+1)" -->
+    <!-- [style.top]="calculateLinePosition(i+1)" -->
+    
+</div>
